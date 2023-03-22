@@ -24,8 +24,8 @@ void RectangleLinearElement::addToGlobal(std::shared_ptr<Matrix>& matrix, std::v
          { 2, 1, 4, 2 },
          { 1, 2, 2, 4 },
       });
-   cType hx = vertexes[this->_nodes[1]]->x - vertexes[this->_nodes[0]]->x;
-   cType hy = vertexes[this->_nodes[2]]->y - vertexes[this->_nodes[0]]->y;
+   cType hx = vertexes[this->_nodes[3]]->x - vertexes[this->_nodes[0]]->x;
+   cType hy = vertexes[this->_nodes[3]]->y - vertexes[this->_nodes[0]]->y;
    auto localA = *((this->_lambda * hy / (6 * hx)) * gx + (this->_lambda * hx / (6 * hy)) * gy) + this->_gamma * hx * hy / 36 * m;
    auto localB = hx * hy / 36 * m;
    for (size_t i{ 0 }; i < this->_nodes.size(); i++) {
@@ -34,4 +34,9 @@ void RectangleLinearElement::addToGlobal(std::shared_ptr<Matrix>& matrix, std::v
          b[this->_nodes[i]] += f[this->_nodes[i]] * localB[i][j];
       }
    }
+}
+
+bool RectangleLinearElement::isInside(Point3 p, const std::vector<std::shared_ptr<Point3>>& vertexes)
+{
+   return vertexes[_nodes[0]]->x <= p.x && vertexes[_nodes[3]]->x >= p.x && vertexes[_nodes[0]]->y <= p.y && vertexes[_nodes[3]]->y >= p.y;
 }

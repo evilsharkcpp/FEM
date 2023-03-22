@@ -70,7 +70,8 @@ std::shared_ptr<Matrix> FlatMatrix::operator*(const cType& a) const
 {
    auto result = std::shared_ptr<Matrix>(new FlatMatrix(this->_mat));
    for (size_t i{ 0 }; i < _n; i++) {
-      (*result)[i][i] = _mat[i][i] * a;
+      for (size_t j{ 0 }; j < _n; j++)
+      (*result)[i][j] = _mat[i][j] * a;
    }
    return result;
 }

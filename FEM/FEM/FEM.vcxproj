@@ -135,6 +135,7 @@
     <ClCompile Include="LOS.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="RectangleLinearElement.cpp" />
+    <ClCompile Include="SparseMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\BoundaryCondition.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="headers\Mesh.h" />
     <ClInclude Include="headers\Point3.h" />
     <ClInclude Include="headers\RectangleLinearElement.h" />
+    <ClInclude Include="SparseMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

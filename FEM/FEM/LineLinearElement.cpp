@@ -21,3 +21,8 @@ void LineLinearElement::addToGlobal(std::shared_ptr<Matrix>& matrix, std::vector
       }
    }
 }
+
+bool LineLinearElement::isInside(Point3 p, const std::vector<std::shared_ptr<Point3>>& vertexes)
+{
+   return false;
+}

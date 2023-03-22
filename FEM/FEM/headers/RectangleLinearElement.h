@@ -10,4 +10,5 @@ public:
    RectangleLinearElement() : Element::Element(ElementType::LinearRectangle, {}, 0, 0) {}
    RectangleLinearElement(std::vector<size_t> nodes) : Element::Element(ElementType::LinearRectangle, nodes, 0, 0) {}
    void addToGlobal(std::shared_ptr<Matrix>& matrix, std::vector<cType>& b, const std::vector<std::shared_ptr<Point3>>& vertexes, const std::vector<cType> f) override;
+   bool isInside(Point3 p, const std::vector<std::shared_ptr<Point3>>& vertexes) override;
 };

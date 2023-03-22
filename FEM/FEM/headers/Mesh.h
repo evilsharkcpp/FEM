@@ -17,4 +17,6 @@ public:
 
    //Methods
    void buildMesh1(cType a, cType b, size_t splitCount, ElementType type);
+   void readVertexes(std::string fileName, int vertexesCount);
+   void readElements(std:: string fileName, int elementsCount);
 };

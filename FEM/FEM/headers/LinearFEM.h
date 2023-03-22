@@ -20,13 +20,15 @@ class LinearFEM {
    //Private Methods
    void AssemblyGlobalMatrix();
    void ConsiderFirstBoundary();
+   void ConsiderFirstBoundary(std::string fileName);
 public:
    //Constructors
    LinearFEM() : _mesh({}), _a({}), _b({}), _solution({}) {}
    
    //Public Methods
    void CreateTask();
-   void RunTask();
+   void RunTask(std::string fname = "");
    void printSolution();
-   
+   void readMaterials(std::string fileTok, std::string fileMu, std::string fileMaterials);
+   double getResult(Point3 value);
 };

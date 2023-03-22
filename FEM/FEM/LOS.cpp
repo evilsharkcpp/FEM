@@ -1,5 +1,4 @@
 #include "headers/LOS.h"
-
 using namespace std;
 
 cType LOS::norm(vector<cType>& x){
@@ -11,7 +10,7 @@ cType LOS::norm(vector<cType>& x){
 }
 
 //for sparse matrix
-//void LOS::multMatrixByVector(vector<cType>& res, Matrix& mat, vector<cType>& v)
+//void LOS::multMatrixByVector(vector<cType>& res, SparseMatrix& mat, vector<cType>& v)
 //{
 //   auto jg = mat.getColnsArray();
 //   auto ig = mat.getRowsArray();
@@ -70,6 +69,7 @@ cType LOS::scalar(vector<cType>& a, vector<cType>& b) {
    }
 
    void LOS::calculate(vector<cType>& x_start, cType eps) {
+
       multMatrixByVector(r, a, x_start);
       for (int i = 0; i < r.size(); i++) {
          r[i] = b[i] - r[i];

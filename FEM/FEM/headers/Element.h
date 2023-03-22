@@ -24,4 +24,11 @@ public:
       _type(type), _nodes(std::vector<size_t>(nodes)), _lambda(lambda), _gamma(gamma) {}
    virtual void addToGlobal(std::shared_ptr<Matrix>& matrix, std::vector<cType>& b, const std::vector<std::shared_ptr<Point3>>& vertexes, const std::vector<cType> f) = 0;
    virtual void ConsiderFirstBoundary(std::shared_ptr<Matrix>& matrix, std::vector<cType>& b, const std::shared_ptr<BoundaryCondition>& boundary);
+   void setLambda(cType lambda) {
+      _lambda = lambda;
+   }
+   const std::vector<size_t>& getNodes() const {
+      return _nodes;
+   }
+   virtual bool isInside(Point3 p, const std::vector<std::shared_ptr<Point3>>& vertexes) = 0;
 };
