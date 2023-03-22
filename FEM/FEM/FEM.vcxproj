@@ -134,6 +134,7 @@
     <ClCompile Include="LineLinearElement.cpp" />
     <ClCompile Include="LOS.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="RectangleLinearElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\BoundaryCondition.h" />
