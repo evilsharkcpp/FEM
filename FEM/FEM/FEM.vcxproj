@@ -149,6 +149,7 @@
     <ClInclude Include="headers\Mesh.h" />
     <ClInclude Include="headers\Point3.h" />
     <ClInclude Include="headers\RectangleLinearElement.h" />
+    <ClInclude Include="LinearFEMSparse.h" />
     <ClInclude Include="SparseMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

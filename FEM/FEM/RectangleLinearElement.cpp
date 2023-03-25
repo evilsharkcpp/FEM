@@ -30,8 +30,8 @@ void RectangleLinearElement::addToGlobal(std::shared_ptr<Matrix>& matrix, std::v
    auto localB = hx * hy / 36 * m;
    for (size_t i{ 0 }; i < this->_nodes.size(); i++) {
       for (size_t j{ 0 }; j < this->_nodes.size(); j++) {
-         (*matrix)[this->_nodes[i]][this->_nodes[j]] += (*localA)[i][j];
-         b[this->_nodes[i]] += f[this->_nodes[i]] * localB[i][j];
+         (*matrix)(this->_nodes[i],this->_nodes[j]) += (*localA)(i,j);
+         b[this->_nodes[i]] += f[this->_nodes[i]] * localB(i,j);
       }
    }
 }

@@ -1,5 +1,6 @@
 #include "headers/Mesh.h"
 #include "fstream"
+
 void Mesh::buildMesh1(cType a, cType b, size_t splitCount, ElementType type) {
    cType h = (b - a) / splitCount;
    _vertexes.push_back(std::make_shared<Point3>(a, 0, 0));
