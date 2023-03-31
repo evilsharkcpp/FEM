@@ -30,7 +30,7 @@ void LinearFEM::ConsiderFirstBoundary(std::string fileName)
 {
    std::ifstream in(fileName, ios::binary);
    int i = 0;
-   while (!in.eof() && i++ < 105)
+   while (!in.eof() && i++ <= 110)
    {
       int a{};
       in.read((char*)&a, sizeof(a));
@@ -89,9 +89,9 @@ void LinearFEM::makePortreit()
 
 void LinearFEM::CreateTask() {
    _mesh = std::shared_ptr<Mesh>(new Mesh());
-   _mesh->readElements("./nvtr.dat", 1300);
-   _mesh->readVertexes("./rz.dat", 1377);
-   readMaterials("./toku", "./muk", "./nvkat2d.dat");
+   _mesh->readElements("./nvtr.dat", 1353);
+   _mesh->readVertexes("./rz.dat", 1428);
+   readMaterials("./toku", "./mu", "./nvkat2d.dat");
    makePortreit();
    //_mesh->buildMesh1(0, 2, 2, ElementType::LinearLine);
    //_a = std::shared_ptr<FlatMatrix>(new FlatMatrix(_mesh->getVertexes().size()));
@@ -145,7 +145,9 @@ void LinearFEM::readMaterials(std::string fileTok, std::string fileMu, std::stri
    in.open(fileMaterials, ios::binary);
    size_t size = this->_mesh->getElements().size();
    auto elem = this->_mesh->getElements();
-   _f = std::vector<cType>(this->_mesh->getVertexes().size());
+   _f = std::vector<cType>(this->_mesh->getVertexes().size(), 0);
+   vector<int> counter = vector<int>(_mesh->getVertexes().size(), 0);
+
    for (int i{ 0 }; i < size; i++)
    {
       int c{};
@@ -154,8 +156,14 @@ void LinearFEM::readMaterials(std::string fileTok, std::string fileMu, std::stri
       auto nodes = elem[i]->getNodes();
       for (const auto& item : nodes)
       {
-         _f[item] = tok[c - 1];
+         counter[item]++;
+         _f[item] += tok[c - 1];
       }
+   }
+   size = _mesh->getVertexes().size();
+   for (int i{ 0 }; i < size; i++)
+   {
+      _f[i] /= counter[i];
    }
 }
 

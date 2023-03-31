@@ -43,6 +43,7 @@ SparseMatrix::SparseMatrix(vector<int> ia, vector<int> ja, size_t size)
    SparseMatrix::di = vector<double>(size);
    SparseMatrix::gu = vector<double>(SparseMatrix::jg.size());
    SparseMatrix::gl = vector<double>(SparseMatrix::jg.size());
+   _n = size;
 }
 
 double SparseMatrix::getValue(int i, int j)

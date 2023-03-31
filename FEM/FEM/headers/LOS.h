@@ -22,8 +22,8 @@ public:
    LOS();
    /*LOS(SparseMatrix& mat, vector<cType>& b, int iter);*/
    LOS(std::shared_ptr<Matrix>& mat, vector<cType>& b, int iter);
-   void calculate(vector<cType>& x_start, cType eps = 1e-8);
-   void calculateFast(vector<cType>& x_start, cType eps = 1e-8);
+   void calculate(vector<cType>& x_start, cType eps = 1e-12);
+   void calculateFast(vector<cType>& x_start, cType eps = 1e-12);
    void getResult(vector<cType>& res);
    static cType norm(vector<cType>& x);
 };

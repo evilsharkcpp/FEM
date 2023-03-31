@@ -9,9 +9,9 @@ int main()
       LinearFEM fem;
       fem.CreateTask();
       fem.RunTask("./l1.dat");
-      //fem.printSolution();
+      fem.printSolution();
       std::ofstream out("out.txt");
-      std::vector<Point3> points = std::vector<Point3>{ Point3(-0.011,0.001,0), Point3(-0.0019,0.0008,0), Point3(-0.0009,0.0002,0), Point3(0.0024,0.0008,0), Point3(0.0076,0.0013,0) };
+      std::vector<Point3> points = std::vector<Point3>{ Point3(-4.20000E-03 ,3.00000E-03,0) };
       for (auto& p : points)
       {
          auto a = fem.getResult(p);
